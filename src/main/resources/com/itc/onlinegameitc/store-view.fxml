@@ -400,7 +400,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="10.0" prefWidth="200.0" spacing="6.0">
                                        <children>
-                                          <Label fx:id="moneyLabel" prefHeight="10.0" stylesheets="@css/Labels.css" text="000">
+                                          <Label fx:id="moneyLabel" prefHeight="10.0" stylesheets="@css/Labels.css" text="0">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
