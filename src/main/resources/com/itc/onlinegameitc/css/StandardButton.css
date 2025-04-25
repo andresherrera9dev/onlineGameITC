@@ -2,7 +2,6 @@
     -fx-background-color: #202224;
     -fx-border-color: #3d4145;
     -fx-text-fill: #aeb0b2;
-    /*-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.45), 1, 5, 0, 0);*/
     -fx-border-radius: 0;
 }
 
@@ -10,15 +9,12 @@
     -fx-background-color: #2b333f; /* gradiente de 4 colores */
     -fx-border-color: #00a7ff;
     -fx-text-fill: white;
-    /*-fx-effect: dropshadow(gaussian, rgb(0, 159, 255), 10, 0, 0, 0);*/
     -fx-border-radius: 0;
 }
 
 .button:pressed {
-    /*-fx-background-color: linear-gradient(to bottom, #202224, #143047, #0d3f60,  #287ba9); !* gradiente de 4 colores *!*/
     -fx-border-color: #88cef8;
     -fx-text-fill: white;
-    /*-fx-effect: dropshadow(gaussian, rgb(103, 199, 255), 10, 0, 0, 0);*/
     -fx-border-radius: 0;
  }
 

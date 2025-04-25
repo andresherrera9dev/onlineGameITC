@@ -9,7 +9,7 @@
 }
 
 .text-field:hover {
-    -fx-background-color: #2b333f; /* gradiente de 4 colores */
+    -fx-background-color: #2b333f;
     -fx-border-color: #00a7ff;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgb(0, 159, 255), 10, 0, 0, 0);
@@ -17,7 +17,7 @@
 }
 
 .text-field:focused {
-    -fx-background-color: #2b333f; /* gradiente de 4 colores */
+    -fx-background-color: #2b333f;
     -fx-border-color: #007acc;
     -fx-text-fill: #ffffff;
 }

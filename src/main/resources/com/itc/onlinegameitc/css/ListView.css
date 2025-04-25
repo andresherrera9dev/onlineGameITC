@@ -1,15 +1,14 @@
 .list-view {
-    -fx-background-color: #101211; /* Un gris claro de fondo */
+    -fx-background-color: #101211;
 }
 
 .list-view .list-cell {
-    -fx-background-color: #101211; /* Fondo blanco para cada celda */
-    -fx-text-fill: white;          /* Color de texto oscuro */
+    -fx-background-color: #101211;
+    -fx-text-fill: white;
 }
 
-/* Estilo para una celda cuando está seleccionada */
 .list-view:focused .list-cell:selected {
-    -fx-background-color: linear-gradient(to bottom, #202224, #143047, #0d3f60,  #287ba9); /* gradiente de 4 colores */
+    -fx-background-color: linear-gradient(to bottom, #202224, #143047, #0d3f60,  #287ba9);
     -fx-border-color: #88cef8;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgb(103, 199, 255), 10, 0, 0, 0);
@@ -17,7 +16,7 @@
 }
 
 .list-view:focused {
-    -fx-background-color: linear-gradient(to bottom, #202224, #143047, #0d3f60,  #287ba9); /* gradiente de 4 colores */
+    -fx-background-color: linear-gradient(to bottom, #202224, #143047, #0d3f60,  #287ba9);
     -fx-border-color: #88cef8;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgb(103, 199, 255), 10, 0, 0, 0);
@@ -28,12 +27,11 @@
     -fx-background-color: #202224;
     -fx-border-color: #101211;
     -fx-text-fill: #aeb0b2;
-    /*-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.45), 1, 5, 0, 0);*/
     -fx-border-radius: 0;
 }
 
 .button:hover {
-    -fx-background-color: #2b333f; /* gradiente de 4 colores */
+    -fx-background-color: #2b333f;
     -fx-border-color: #00a7ff;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgb(0, 159, 255), 10, 0, 0, 0);
@@ -41,7 +39,7 @@
 }
 
 .button:pressed {
-    -fx-background-color: linear-gradient(to top, #202224, #0d3f60,  #287ba9); /* gradiente de 4 colores */
+    -fx-background-color: linear-gradient(to top, #202224, #0d3f60,  #287ba9);
     -fx-border-color: #88cef8;
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, rgb(103, 199, 255), 10, 0, 0, 0);
