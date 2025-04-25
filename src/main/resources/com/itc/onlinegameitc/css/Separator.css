@@ -1,0 +1,25 @@
+.separator {
+    -fx-pref-height: 0.5px; /* Ejemplo para separador horizontal */
+    -fx-background-color: #b1a584; /* Color principal de la línea */
+}
+
+.separator .line {
+    -fx-border-style: solid;
+    -fx-border-width: 0.5px; /* Asegúrate de que coincida con el -fx-pref-height o -fx-pref-width */
+    -fx-border-color: rgba(177, 165, 132, 0.78); /* El mismo color que el -fx-background-color */
+    -fx-background-color: transparent; /* Asegura que el fondo del "line" sea transparente */
+}
+
+/* Para separadores verticales */
+.separator.vertical {
+    -fx-orientation: vertical;
+    -fx-pref-width: 0.5px; /* Ejemplo para separador vertical */
+    -fx-background-color: #b1a584; /* Color principal de la línea vertical */
+}
+
+.separator.vertical .line {
+    -fx-border-style: solid;
+    -fx-border-width: 0.5px; /* Asegúrate de que coincida con el -fx-pref-width */
+    -fx-border-color: #b1a584; /* El mismo color que el -fx-background-color */
+    -fx-background-color: transparent; /* Fondo transparente */
+}

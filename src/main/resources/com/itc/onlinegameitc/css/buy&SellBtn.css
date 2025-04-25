@@ -1,0 +1,47 @@
+#addBtn{
+    -fx-background-color: #2b3640;
+    -fx-border-color: #101211;
+    -fx-text-fill: #ffffff;
+    /*-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.45), 1, 5, 0, 0);*/
+    -fx-border-radius: 0;
+}
+#buyBtn{
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #101211;
+    -fx-text-fill: #797a7c;
+    /*-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.45), 1, 5, 0, 0);*/
+    -fx-border-radius: 0;
+}
+
+#addBtn:hover {
+    -fx-background-color: linear-gradient(to top, #202224, #202224, #202224, #202224, #143047, #0d3f60,  #287ba9); /* gradiente de 4 colores */
+    -fx-border-color: #00a7ff;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgb(0, 159, 255), 10, 0, 0, 0);
+    -fx-border-radius: 0;
+}
+
+#addBtn:pressed {
+    -fx-background-color: linear-gradient(to top, #202224, #143047, #0d3f60,  #287ba9); /* gradiente de 4 colores */
+    -fx-border-color: #88cef8;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgb(103, 199, 255), 10, 0, 0, 0);
+    -fx-border-radius: 0;
+}
+
+#buyBtn:hover {
+    -fx-background-color: linear-gradient(to top, #212420, #212420, #1f4714, #29600d,  #287ba9); /* gradiente de 4 colores */
+    -fx-border-color: #b7fda1;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgb(29, 255, 5), 10, 0, 0, 0);
+    -fx-border-radius: 0;
+}
+
+#buyBtn:pressed {
+    -fx-background-color: linear-gradient(to top, #212420, #212420, #1f4714, #29600d,  #287ba9); /* gradiente de 4 colores */
+    -fx-border-color: #cdfbbc;
+    -fx-text-fill: #30ff00;
+    -fx-effect: dropshadow(gaussian, rgb(118, 255, 103), 10, 0, 0, 0);
+    -fx-border-radius: 0;
+}
+

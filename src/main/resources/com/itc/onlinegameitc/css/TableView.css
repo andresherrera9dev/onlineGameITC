@@ -1,0 +1,51 @@
+.table-view {
+    -fx-background-color: #0f1110;   /* Fondo de la tabla */
+    -fx-table-cell-border-color: #444; /* Bordes entre celdas */
+    -fx-padding: 5;
+    -fx-border-color: #555;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #1e1e1e; /* Fondo de cabecera */
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: #1e222a;
+    -fx-size: 30px;
+    -fx-border-color: #3d4145;
+    -fx-border-width: 0.5;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #c7b485;      /* Texto de la cabecera */
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #1e222a;
+    -fx-border-color: #333;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .table-cell {
+    -fx-background-color: #1e222a;
+    -fx-text-fill: #c7b485;      /* Texto de las celdas */
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 4 8 4 8;
+}
+
+/* Hover de fila */
+.table-view .table-row-cell:hover {
+    -fx-background-color: #444444;
+    -fx-border-color: #c7b485;
+    -fx-border-width: 2;
+}
+
+/* Fila seleccionada */
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #5e81ac; /* Azulito cool */
+    -fx-text-fill: #c7b485;
+}

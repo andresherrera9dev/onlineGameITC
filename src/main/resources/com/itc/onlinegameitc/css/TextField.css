@@ -1,0 +1,25 @@
+.text-field{
+    -fx-background-color: #202224;
+    -fx-border-color: #3d4145;
+    -fx-font-size: 12px;
+    -fx-text-fill: #aeb0b2;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+
+.text-field:hover {
+    -fx-background-color: #2b333f; /* gradiente de 4 colores */
+    -fx-border-color: #00a7ff;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgb(0, 159, 255), 10, 0, 0, 0);
+    -fx-border-radius: 0;
+}
+
+.text-field:focused {
+    -fx-background-color: #2b333f; /* gradiente de 4 colores */
+    -fx-border-color: #007acc;
+    -fx-text-fill: #ffffff;
+}
+
+

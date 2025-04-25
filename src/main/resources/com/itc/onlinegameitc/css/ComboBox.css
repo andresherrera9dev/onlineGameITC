@@ -1,0 +1,48 @@
+.combo-box {
+    -fx-background-color: #202224;
+    -fx-border-color: #3d4145;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0;
+}
+
+.combo-box:hover {
+    -fx-background-color: #2b333f; /* gradiente de 4 colores */
+    -fx-border-color: #00a7ff;
+    -fx-text-fill: white;
+    -fx-border-radius: 0;
+    -fx-effect: dropshadow(gaussian, rgb(103, 199, 255), 5, 0, 0, 0);
+}
+
+.combo-box:focused {
+    -fx-background-color: linear-gradient(to bottom, #202224, #202224, #202224, #202224, #143047, #0d3f60,  #287ba9); /* gradiente de 4 colores */
+    -fx-border-color: #007acc;
+    -fx-text-fill: #007acc;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #28333e;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #c8b685; /* Cambia el color de la flecha */
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: white;
+
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #202224;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell:selected {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
