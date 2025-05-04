@@ -3,7 +3,7 @@
  * @author Andres Herrera Oettinghaus
  */
 
-package com.itc.onlinegameitc;
+package com.itc.onlinegameitc.storeController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,71 +16,71 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StoreController implements Initializable {
+public class initController implements Initializable {
     /** Elementos graficos del programa:
 
     /** Barra de titulo*/
     @FXML //Boton cerrar el stage
-    private Button closeBtn;
+    protected Button closeBtn;
     @FXML //Barra de la ventana, maneja el movimiento de la ventana
-    private StackPane titlebarStackPane;
+    protected StackPane titlebarStackPane;
 
     /** Filtros para categorias generales*/
     @FXML //Botones para mostrar toda una categoria
-    private Button allAccessoryBtn, allEquipmentBtn, allOtherBtn;
+    protected Button allAccessoryBtn, allEquipmentBtn, allOtherBtn;
     @FXML //Boton para mostrar todas las categorias
-    private Button allItemsBtn;
+    protected Button allItemsBtn;
 
     /** Filtros para lo particular*/
     @FXML //TextField para filtrar por nombre del articulo
-    private TextField searchTextField;
+    protected TextField searchTextField;
     @FXML //Botones busqueda
-    private Button searchBtn;
-    private String searchString = "";
+    protected Button searchBtn;
+    protected String searchString = "";
 
     /** Filtro extras para clase, tier y rareza*/
     @FXML //ComboBox para agregar filtro particulares extras
-    private ComboBox<String> rankComboBox, tierComboBox, classCombobox;
+    protected ComboBox<String> rankComboBox, tierComboBox, classCombobox;
     //String usados para ser usados en las clases DAO
-    private String classFilter ="All", tierFilter="All", rankFilter="All";
+    protected String classFilter ="All", tierFilter="All", rankFilter="All";
 
     /** Para mostrar u ocultar Filtros*/
     @FXML //Boton para mostrar/esconder filtros
-    private Button accessoryBtn, equipmentBtn, otherBtn;
+    protected Button accessoryBtn, equipmentBtn, otherBtn;
     @FXML //Contenedores de los filtros
-    private VBox accessoryVBox, equipmentVBox, otherVBox;
+    protected VBox accessoryVBox, equipmentVBox, otherVBox;
 
     /** Muestra Informacion de la base de datos*/
     @FXML//TableView para mostrar los articulos
-    private TableView<?> marketTableView;
+    protected TableView<?> marketTableView;
     @FXML //Columnas informacion articulo
-    private TableColumn<?, ?>
+    protected TableColumn<?, ?>
             rankColumn, recentColumn, avgColumn,
             cheapestColumn, lowestColumn;
     @FXML //Mostrar las paginas del TableView
-    private Label numberPagesLabel;
+    protected Label numberPagesLabel;
     @FXML //Mostrar articulos siguiente y anterior
-    private Button nextPageBtn, backPageBtn;
+    protected Button nextPageBtn, backPageBtn;
 
     /** Mostrar Informacion del player*/
     @FXML //Label para mostrar el saldo del jugador
-    private Label moneyLabel;
+    protected Label moneyLabel;
     @FXML //Boton que lanza un nuevo Stage para mostrar las transcciones
-    private Button transactionsLabel;
+    protected Button transactionsLabel;
 
     /** Acceden a las clases DAO*/
-    private String generalCategoryFilter = "All",
+    protected String generalCategoryFilter = "All",
                     specificCategoryFilter = "none";
     @FXML //Botones Filtro
-    private Button weaponsBtn, helmetsBtn, chestPiecesBtn,
+    protected Button weaponsBtn, helmetsBtn, chestPiecesBtn,
             pantsBtn, glovesBtn, shouldersBtn,
             necklacesBtn, earingsBtn, ringsBtn;
 
     /** Modificar base de datos atravez de clases DAO*/
     @FXML //Boton agregar articulo
-    private Button addBtn;
+    protected Button addBtn;
     @FXML //Boton comprar articulo
-    private Button buyBtn;
+    protected Button buyBtn;
 
     /** inicializador de elementos de la GUI*/
     @Override
@@ -91,137 +91,24 @@ public class StoreController implements Initializable {
         setItemsTierComboBox();
         titlebar();
     }
-
-    /** Metodo para acceder a la clase DAO */
-    void searchDatabase(){
-        /**Elementos String que se pueden utilizan para el select en la base de datos:
-         * searchString
-         * classFilter
-         * tierFilter
-         * rankFilter
-         * categoryFilter
-         * */
-
-        System.out.printf("search String: %s\n",searchString);
-        System.out.printf("classFilter: %s\n",classFilter);
-        System.out.printf("tierFilter: %s\n",tierFilter);
-        System.out.printf("rankFilter: %s\n",rankFilter);
-        System.out.printf("categoryFilter: %s\n\n", generalCategoryFilter);
-
-        //Realizar diferente tipo de seleccion dependiendo si esta vacio o no el campo de busqueda
-        boolean searchFlag = searchString.isBlank();
-        if(searchFlag)
-        {
-            //Llamar a la clase DAO
-            //Utilizar los valores de los filtros para filtrar la seleccion de elementos
-        }
-        else
-        {
-            //Llamar a la clase DAO
-            //Utilizar los valores de los filtros para filtrar la seleccion de elementos
-        }
-    }
-
-    /** Eventos de click y seleccion de la GUI */
-    @FXML
-    void addIteamNewStage(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buyItem(ActionEvent event) {
-
-    }
-
-    @FXML
-    void readSearchField(ActionEvent event) {
-        if(!searchTextField.getText().isEmpty())
-        {
-            searchString = searchTextField.getText();
-            searchDatabase();
-        }
-    }
-
-    @FXML
-    void filterSearch(ActionEvent event) {
-        Button clickedButton = (Button) event.getSource();
-        //Asigna un valor al string para utilizar en la seleccion de datos en la base de datos;
-        if (clickedButton == allItemsBtn) generalCategoryFilter = "All";
-        else if (clickedButton == allEquipmentBtn)generalCategoryFilter = "All Equipment";
-        else if (clickedButton == allAccessoryBtn)generalCategoryFilter = "All Accessory";
-        else if (clickedButton == allOtherBtn)generalCategoryFilter = "All Other";
-        else if (clickedButton == weaponsBtn)generalCategoryFilter = "Weapons";
-        else if (clickedButton == helmetsBtn)generalCategoryFilter = "Helmets";
-        else if (clickedButton == chestPiecesBtn)generalCategoryFilter = "Chest Pieces";
-        else if (clickedButton == pantsBtn)generalCategoryFilter = "Pants";
-        else if (clickedButton == glovesBtn)generalCategoryFilter = "Gloves";
-        else if (clickedButton == shouldersBtn)generalCategoryFilter = "Shoulders";
-        else if (clickedButton == necklacesBtn)generalCategoryFilter = "Necklaces";
-        else if (clickedButton == earingsBtn)generalCategoryFilter = "Earings";
-        else if (clickedButton == ringsBtn)generalCategoryFilter = "Rings";
-
-        //Llamar a la clase DAO y mostrar elementos
-        searchDatabase();
-    }
-
-    /** Muestra todos los elementos
-     * Opcional: asignar todos los filtros a All para mostrar todos los elementos
-     *           borrar textfield, seleccionar elementos all en combobox
-     * SIN IMPLEMENTAR LOGICA DE LA CLASE DAO*/
-
-    @FXML
-    void showAllItems(ActionEvent event) {
-        generalCategoryFilter = "All";
-        classFilter ="All";
-        tierFilter="All";
-        rankFilter="All";
-        searchString = "";
-
-        classCombobox.getSelectionModel().selectFirst();
-        rankComboBox.getSelectionModel().selectFirst();
-        tierComboBox.getSelectionModel().selectFirst();
-
-        searchTextField.setText("");
-
-        searchDatabase();
-        showCategories(event);
-        //Llamar a la clase DAO y mostrar elementos
-    }
-
     /** Inicializa el estado de escondido de los contenedores de seleccion de filtros
-     * SIN IMPLEMENTAR LOGICA DE LA CLASE DAO*/
+     * TERMINADO*/
 
-    /** OPCIONAL:
-     * Mostrar todas las operaciones realizadas por el usuario
-     * es necesario agregar una nueva tupla a una la tabla transacciones
-     * por cada transaccion realizada
-     *  Trabajar en esto despues de terminar lo basico del programa
-     * */
-
-    @FXML
-    void showTransactions(ActionEvent event) {
-
+    protected void initVBoxesVisibility(){
+        equipmentVBox.setVisible(false);
+        accessoryVBox.setVisible(false);
+        otherVBox.setVisible(false);
+        equipmentVBox.setManaged(false);
+        accessoryVBox.setManaged(false);
+        otherVBox.setManaged(false);
     }
 
-    /** OPCIONAL:
-     *  Muestran la busqueda de la base de datos en partes
-     *  Cargar n elementos a los tableview de una busqueda dada
-     *  Trabajar en esto despues de terminar lo basico del programa
-     * SIN IMPLEMENTAR LOGICA DE LA CLASE DAO*/
-    @FXML
-    void loadBackitems(ActionEvent event) {
-
-    }
-    @FXML
-    void loadNextItems(ActionEvent event) {
-
-    }
     /** Logica de mostrado y ocultamiento de filtros segun categoria seleccionada
      * Muestra y oculta VBoxes segun si esta esta visible o no
      * TERMINADO*/
 
     @FXML
-    void showCategories(ActionEvent event) {
+    protected void showCategories(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
         if (clickedButton == equipmentBtn) {
             equipmentVBox.setManaged(!equipmentVBox.isVisible());
@@ -254,42 +141,29 @@ public class StoreController implements Initializable {
         }
     }
 
-    /** Inicializa el estado de escondido de los contenedores de seleccion de filtros
-     * TERMINADO*/
-
-    private void initVBoxesVisibility(){
-        equipmentVBox.setVisible(false);
-        accessoryVBox.setVisible(false);
-        otherVBox.setVisible(false);
-        equipmentVBox.setManaged(false);
-        accessoryVBox.setManaged(false);
-        otherVBox.setManaged(false);
-    }
-
     /** Inicializacion de los valores del ComboBox
      * TERMINADO*/
 
-    private void setItemsClassCombobox(){
+    protected void setItemsClassCombobox(){
         classCombobox.getItems().add("All Classes");
         classCombobox.getItems().add("Warrior");
         classCombobox.getItems().add("Mage");
         classCombobox.getItems().add("Druid");
         classCombobox.getItems().add("Rogue");
     }
-    private void setItemsRankComboBox(){
+    protected void setItemsRankComboBox(){
         rankComboBox.getItems().add("All Rarities");
         rankComboBox.getItems().add("Common");
         rankComboBox.getItems().add("Rare");
         rankComboBox.getItems().add("Arcane");
         rankComboBox.getItems().add("Legendary");
     }
-    private void setItemsTierComboBox(){
+    protected void setItemsTierComboBox(){
         tierComboBox.getItems().add("All Tiers");
         tierComboBox.getItems().add("Tier 1");
         tierComboBox.getItems().add("Tier 2");
         tierComboBox.getItems().add("Tier 3");
     }
-
     /** Asignacion de valores a los filtros string de botones presionados
      * TERMINADO*/
 
@@ -334,7 +208,7 @@ public class StoreController implements Initializable {
         }
     }
 
-    /** Logica de barra de ventana
+    /** Logica de barra de titulo de la ventana
      * TERMINADO */
 
     private double xOffset = 0;

@@ -9,4 +9,6 @@ module com.itc.onlinegameitc {
 
     opens com.itc.onlinegameitc to javafx.fxml;
     exports com.itc.onlinegameitc;
+    exports com.itc.onlinegameitc.storeController;
+    opens com.itc.onlinegameitc.storeController to javafx.fxml;
 }

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="1129.0" stylesheets="@css/VBox.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.itc.onlinegameitc.StoreController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="691.0" prefWidth="1129.0" stylesheets="@css/VBox.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.itc.onlinegameitc.storeController.storeController">
    <children>
       <Separator layoutX="15.0" layoutY="15.0" prefWidth="200.0" stylesheets="@css/Separator.css" />
       <StackPane fx:id="titlebarStackPane" prefHeight="20.0" prefWidth="1119.0" style="-fx-background-color: #202224;">
@@ -425,7 +425,7 @@
                            <children>
                               <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="249.0" style="-fx-background-color: transparent;">
                                  <children>
-                                    <Button fx:id="addBtn" contentDisplay="RIGHT" layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#addIteamNewStage" prefHeight="10.0" prefWidth="139.0" stylesheets="@css/buy&amp;SellBtn.css" text="Add Item">
+                                    <Button fx:id="addBtn" contentDisplay="RIGHT" layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#addIteamNewStage" prefHeight="10.0" prefWidth="139.0" stylesheets="@css/buySellBtn.css" text="Add Item">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -433,7 +433,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="buyBtn" contentDisplay="RIGHT" layoutX="134.0" layoutY="13.0" mnemonicParsing="false" onAction="#buyItem" prefHeight="10.0" prefWidth="139.0" stylesheets="@css/buy&amp;SellBtn.css" text="Buy">
+                                    <Button fx:id="buyBtn" contentDisplay="RIGHT" layoutX="134.0" layoutY="13.0" mnemonicParsing="false" onAction="#buyItem" prefHeight="10.0" prefWidth="139.0" stylesheets="@css/buySellBtn.css" text="Buy">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
