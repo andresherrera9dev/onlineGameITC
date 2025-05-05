@@ -5,10 +5,15 @@
 
 package com.itc.onlinegameitc.storeController;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -27,7 +32,8 @@ public class initController implements Initializable {
 
     /** Filtros para categorias generales*/
     @FXML //Botones para mostrar toda una categoria
-    protected Button allAccessoryBtn, allEquipmentBtn, allOtherBtn;
+    protected Button allAccessoryBtn, allEquipmentBtn, allOtherBtn,
+            allConsumableBtn;
     @FXML //Boton para mostrar todas las categorias
     protected Button allItemsBtn;
 
@@ -40,23 +46,31 @@ public class initController implements Initializable {
 
     /** Filtro extras para clase, tier y rareza*/
     @FXML //ComboBox para agregar filtro particulares extras
-    protected ComboBox<String> rankComboBox, tierComboBox, classCombobox;
+    protected ComboBox<String> classCombobox, levelComboBox, rarityComboBox;
     //String usados para ser usados en las clases DAO
-    protected String classFilter ="All", tierFilter="All", rankFilter="All";
+    protected String classFilter ="All", levelFilter ="All", rarityFilter ="All";
 
     /** Para mostrar u ocultar Filtros*/
     @FXML //Boton para mostrar/esconder filtros
-    protected Button accessoryBtn, equipmentBtn, otherBtn;
+    protected Button accessoryBtn, equipmentBtn, consumibleBtn, otherBtn;
     @FXML //Contenedores de los filtros
-    protected VBox accessoryVBox, equipmentVBox, otherVBox;
+    protected VBox accessoryVBox, equipmentVBox, otherVBox, consumableVbox;
 
     /** Muestra Informacion de la base de datos*/
+    @FXML
+    TableColumn<Item, Image> iconColumn;
     @FXML//TableView para mostrar los articulos
-    protected TableView<?> marketTableView;
-    @FXML //Columnas informacion articulo
-    protected TableColumn<?, ?>
-            rankColumn, recentColumn, avgColumn,
-            cheapestColumn, lowestColumn;
+    protected TableView<Item> marketTableView;
+    @FXML
+    protected TableColumn<Item, String> nameColumn;
+    @FXML
+    protected TableColumn<Item, Integer> levelColumn;
+    @FXML
+    protected TableColumn<Item, String> categoryColumn;
+    @FXML
+    protected TableColumn<Item, Double> priceColumn;
+    @FXML
+    protected TableColumn<Item, Double> avgPriceColumn;
     @FXML //Mostrar las paginas del TableView
     protected Label numberPagesLabel;
     @FXML //Mostrar articulos siguiente y anterior
@@ -71,10 +85,12 @@ public class initController implements Initializable {
     /** Acceden a las clases DAO*/
     protected String generalCategoryFilter = "All",
                     specificCategoryFilter = "none";
+
     @FXML //Botones Filtro
-    protected Button weaponsBtn, helmetsBtn, chestPiecesBtn,
-            pantsBtn, glovesBtn, shouldersBtn,
-            necklacesBtn, earingsBtn, ringsBtn;
+    protected Button weaponsBtn, bootsBtn, chestPiecesBtn,
+            shieldBtn, glovesBtn, equipmentOthersBtn,
+            necklacesBtn, earingsBtn, accessoryOtherBtn,
+            maskBtn;
 
     /** Modificar base de datos atravez de clases DAO*/
     @FXML //Boton agregar articulo
@@ -90,6 +106,47 @@ public class initController implements Initializable {
         setItemsRankComboBox();
         setItemsTierComboBox();
         titlebar();
+
+        // Configurar cómo cada columna obtiene sus datos
+        iconColumn.setCellValueFactory(new PropertyValueFactory<>("icon"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        levelColumn.setCellValueFactory(new PropertyValueFactory<>("level"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        avgPriceColumn.setCellValueFactory(new PropertyValueFactory<>("avgPrice"));
+
+        // Configurar cómo mostrar la imagen
+        iconColumn.setCellFactory(column -> new TableCell<Item, Image>() {
+            private final ImageView imageView = new ImageView();
+
+            @Override
+            protected void updateItem(Image image, boolean empty) {
+                super.updateItem(image, empty);
+
+                if (empty || image == null) {
+                    setGraphic(null);
+                } else {
+                    imageView.setImage(image);
+                    imageView.setFitWidth(30);  // Ajustar tamaño
+                    imageView.setFitHeight(30);
+                    imageView.setPreserveRatio(true);
+                    setGraphic(imageView);
+                }
+            }
+        });
+
+        // Crear datos de ejemplo
+        ObservableList<Item> items = FXCollections.observableArrayList(
+                new Item(loadImage("/com/itc/onlinegameitc/icons/Equipment/Weapons/OoT_Master_Sword_Icon.png"),"Espada", 5, "Armas", 120.50, 115.75),
+                new Item(loadImage("/com/itc/onlinegameitc/icons/Consumable/OoT_Red_Potion_Icon.png"),"Poción", 1, "Consumibles", 25.0, 22.5),
+                new Item(loadImage("/com/itc/onlinegameitc/icons/Equipment/Shield/OoT_Hylian_Shield_Icon.png"),"Escudo", 3, "Armaduras", 85.0, 90.25),
+                new Item(loadImage("/com/itc/onlinegameitc/icons/Equipment/Weapons/OoT_Master_Sword_Icon.png"),"Espada", 5, "Armas", 120.50, 115.75),
+                new Item(loadImage("/com/itc/onlinegameitc/icons/Consumable/OoT_Red_Potion_Icon.png"),"Poción", 1, "Consumibles", 25.0, 22.5),
+                new Item(loadImage("/com/itc/onlinegameitc/icons/Equipment/Shield/OoT_Hylian_Shield_Icon.png"),"Escudo", 3, "Armaduras", 85.0, 90.25)
+        );
+
+        // Asignar los datos al TableView
+        marketTableView.setItems(items);
     }
     /** Inicializa el estado de escondido de los contenedores de seleccion de filtros
      * TERMINADO*/
@@ -100,6 +157,8 @@ public class initController implements Initializable {
         otherVBox.setVisible(false);
         equipmentVBox.setManaged(false);
         accessoryVBox.setManaged(false);
+        consumableVbox.setVisible(false);
+        consumableVbox.setManaged(false);
         otherVBox.setManaged(false);
     }
 
@@ -117,6 +176,8 @@ public class initController implements Initializable {
             equipmentVBox.setVisible(!equipmentVBox.isVisible());
             accessoryVBox.setVisible(false);
             otherVBox.setVisible(false);
+            consumableVbox.setVisible(false);
+            consumableVbox.setManaged(false);
         } else if (clickedButton == accessoryBtn) {
             equipmentVBox.setManaged(false);
             accessoryVBox.setManaged(!accessoryVBox.isVisible());
@@ -124,6 +185,8 @@ public class initController implements Initializable {
             equipmentVBox.setVisible(false);
             accessoryVBox.setVisible(!accessoryVBox.isVisible());
             otherVBox.setVisible(false);
+            consumableVbox.setVisible(false);
+            consumableVbox.setManaged(false);
         } else if (clickedButton == otherBtn) {
             equipmentVBox.setManaged(false);
             accessoryVBox.setManaged(false);
@@ -131,6 +194,17 @@ public class initController implements Initializable {
             equipmentVBox.setVisible(false);
             accessoryVBox.setVisible(false);
             otherVBox.setVisible(!otherVBox.isVisible());
+            consumableVbox.setVisible(false);
+            consumableVbox.setManaged(false);
+        }else if (clickedButton == consumibleBtn) {
+            equipmentVBox.setManaged(false);
+            accessoryVBox.setManaged(false);
+            otherVBox.setManaged(false);
+            equipmentVBox.setVisible(false);
+            accessoryVBox.setVisible(false);
+            otherVBox.setVisible(false);
+            consumableVbox.setManaged(!consumableVbox.isVisible());
+            consumableVbox.setVisible(!consumableVbox.isVisible());
         }else if (clickedButton == allItemsBtn) {
             equipmentVBox.setManaged(false);
             accessoryVBox.setManaged(false);
@@ -138,6 +212,8 @@ public class initController implements Initializable {
             equipmentVBox.setVisible(false);
             accessoryVBox.setVisible(false);
             otherVBox.setVisible(false);
+            consumableVbox.setVisible(false);
+            consumableVbox.setManaged(false);
         }
     }
 
@@ -152,17 +228,17 @@ public class initController implements Initializable {
         classCombobox.getItems().add("Rogue");
     }
     protected void setItemsRankComboBox(){
-        rankComboBox.getItems().add("All Rarities");
-        rankComboBox.getItems().add("Common");
-        rankComboBox.getItems().add("Rare");
-        rankComboBox.getItems().add("Arcane");
-        rankComboBox.getItems().add("Legendary");
+        rarityComboBox.getItems().add("All Rarities");
+        rarityComboBox.getItems().add("Common");
+        rarityComboBox.getItems().add("Rare");
+        rarityComboBox.getItems().add("Arcane");
+        rarityComboBox.getItems().add("Legendary");
     }
     protected void setItemsTierComboBox(){
-        tierComboBox.getItems().add("All Tiers");
-        tierComboBox.getItems().add("Tier 1");
-        tierComboBox.getItems().add("Tier 2");
-        tierComboBox.getItems().add("Tier 3");
+        levelComboBox.getItems().add("All Levels");
+        levelComboBox.getItems().add("Levels 0-20");
+        levelComboBox.getItems().add("Levels 21-50");
+        levelComboBox.getItems().add("Levels 51-100");
     }
     /** Asignacion de valores a los filtros string de botones presionados
      * TERMINADO*/
@@ -171,40 +247,12 @@ public class initController implements Initializable {
     void selectedComboBox(ActionEvent event) {
         ComboBox<String> clickedComboBox = (ComboBox<String>) event.getSource();
         String selected = clickedComboBox.getSelectionModel().getSelectedItem();
-        if(clickedComboBox == rankComboBox){
-            if (selected.equals("Common")) {
-                rankFilter="Common";
-            } else if (selected.equals("Rare")) {
-                rankFilter="Rare";
-            } else if (selected.equals("Arcane")) {
-                rankFilter="Arcane";
-            } else if (selected.equals("Legendary")) {
-                rankFilter="Legendary";
-            } else if (selected.equals("All Rarities")) {
-                rankFilter="All";
-            }
-        }else if(clickedComboBox == tierComboBox){
-            if (selected.equals("Tier 1")) {
-                tierFilter="Tier 1";
-            } else if (selected.equals("Tier 2")) {
-                tierFilter="Tier 2";
-            } else if (selected.equals("Tier 3")) {
-                tierFilter="Tier 3";
-            } else if (selected.equals("All Tiers")) {
-                tierFilter="All";
-            }
+        if(clickedComboBox == rarityComboBox){
+            rarityFilter =selected;
+        }else if(clickedComboBox == levelComboBox){
+            levelFilter =selected;
         }else if(clickedComboBox == classCombobox){
-            if (selected.equals("Warrior")) {
-                classFilter ="Warrior";
-            } else if (selected.equals("Mage")) {
-                classFilter ="Mage";
-            } else if (selected.equals("Druid")) {
-                classFilter ="Druid";
-            } else if (selected.equals("Rogue")) {
-                classFilter ="Rogue";
-            } else if (selected.equals("All Classes")) {
-                classFilter ="All";
-            }
+            classFilter =selected;
         }
     }
 
@@ -230,5 +278,14 @@ public class initController implements Initializable {
     void closeWindow(ActionEvent event) {
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
+    }
+
+    private Image loadImage(String path) {
+        try {
+            return new Image(getClass().getResourceAsStream(path));
+        } catch (Exception e) {
+            System.err.println("Error loading image: " + path);
+            return null;
+        }
     }
 }

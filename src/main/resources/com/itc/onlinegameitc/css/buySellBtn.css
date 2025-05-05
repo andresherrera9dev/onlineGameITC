@@ -1,14 +1,22 @@
 #addBtn{
-    -fx-background-color: #2b3640;
-    -fx-border-color: #101211;
     -fx-text-fill: #ffffff;
     -fx-border-radius: 0;
+    -fx-background-color: #2b3640;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: #101211;
+    -fx-padding: 5 10 5 10;
+    -fx-effect: none;
 }
 #buyBtn{
-    -fx-background-color: #1e1e1e;
-    -fx-border-color: #101211;
     -fx-text-fill: #797a7c;
     -fx-border-radius: 0;
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #101211;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 5 10 5 10;
+    -fx-effect: none;
 }
 
 #addBtn:hover {

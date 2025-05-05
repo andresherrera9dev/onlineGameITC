@@ -42,7 +42,6 @@
 }
 
 .combo-box .list-cell:selected {
-    -fx-background-color: #0f0f0f;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
+    -fx-background-color: #0f0f0f;
 }

@@ -10,6 +10,8 @@
     -fx-border-color: #00a7ff;
     -fx-text-fill: white;
     -fx-border-radius: 0;
+    -fx-translate-y: -1;
+    -fx-translate-x: 1;
 }
 
 .button:pressed {
@@ -17,5 +19,7 @@
     -fx-border-color: #88cef8;
     -fx-text-fill: white;
     -fx-border-radius: 0;
+    -fx-translate-y: -2;
+    -fx-translate-x: 2;
 }
 
